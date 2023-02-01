@@ -24,13 +24,14 @@
       "html"
     ]
   },
+  "scripts": {
+    "test": "npx jest --watchAll --coverage",
+    "dev": "parcel src/index.html"
+  },
   "name": "test-assignment-integrationtest",
   "description": "Detta projekt skall fungera som mall för vad ni skall testa i denna del av kursen, asynkrona tester.",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {
-    "test": "npx jest --watchAll"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/robin-sevelin/test-assignment-integrationtest.git"
