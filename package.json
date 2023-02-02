@@ -25,8 +25,7 @@
     ]
   },
   "scripts": {
-    "test": "npx jest --watchAll --coverage",
-    "dev": "parcel src/index.html"
+    "test": "npx jest --watchAll --coverage"
   },
   "name": "test-assignment-integrationtest",
   "description": "Detta projekt skall fungera som mall för vad ni skall testa i denna del av kursen, asynkrona tester.",

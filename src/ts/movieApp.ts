@@ -21,7 +21,7 @@ export async function handleSubmit() {
   container.innerHTML = '';
 
   try {
-    movies = await exports.getData(searchText);
+    movies = await getData(searchText);
 
     if (movies.length > 0) {
       exports.createHtml(movies, container);

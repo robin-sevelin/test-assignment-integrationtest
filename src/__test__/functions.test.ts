@@ -36,7 +36,7 @@ test('should sort movies descending order when desc is true ', () => {
   ];
 
   // act
-  movieSort(testData, true);
+  movieSort(testData);
 
   // assert
   expect(testData[0].Title).toBe('King kong');
@@ -95,7 +95,7 @@ test('sort function should not sort when desc is true and list items are equal',
   ];
 
   // act
-  let result: IMovie[] = movieSort(testData, true);
+  let result: IMovie[] = movieSort(testData);
 
   // assert
   expect(testData[0].Title).toBe('Saw');

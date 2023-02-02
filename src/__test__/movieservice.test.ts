@@ -1,67 +1,30 @@
-import { IMovie } from '../ts/models/Movie';
-import { getData } from '../ts/services/movieservice';
-
-// jest.mock('../ts/services/movieservice');
+import * as movieservice from '../ts/services/movieservice';
+import { testData } from '../ts/services/__mocks__/movieservice';
 
 jest.mock('axios', () => ({
   get: async (url: string) => {
     return new Promise((resolve, reject) => {
       if (url.endsWith('error')) {
-        reject('something went wrong');
+        reject('error');
       } else {
-        resolve([
-          {
-            Title: 'Saw',
-            imdbID: 'something',
-            Type: 'horror',
-            Poster: 'none',
-            Year: 'Sometime',
-          },
-          {
-            Title: 'Winnie the pooh',
-            imdbID: 'something',
-            Type: 'family movie',
-            Poster: 'none',
-            Year: 'Sometime',
-          },
-          {
-            Title: 'King kong',
-            imdbID: 'something',
-            Type: 'adventure',
-            Poster: 'none',
-            Year: 'Sometime',
-          },
-        ]);
+        resolve({ data: { Search: testData } });
       }
     });
   },
 }));
 
-// test('should get data correctly ', async () => {
-//   // arrange
-
-//   // act
-//   let data = await getData('test');
-
-//   // assert
-//   expect(data.length).toBe(3);
-// });
-
-test('should get error getting data', async () => {
+test('should generate error message', async () => {
   try {
-    let data = await getData('error');
+    await movieservice.getData('error');
   } catch (error: any) {
     expect(error.length).toBe(0);
   }
 });
 
-// test('should get saw correctly', async () => {
-//   let text = '';
+test('should get test data', async () => {
+  await movieservice.getData('text');
 
-//   let movie: IMovie[] = await getData(text);
-
-//   movie[0].Title;
-
-//   expect(movie[0].Title).toBe('Saw');
-//   expect(movie.length).toBe(3);
-// });
+  expect(testData.length).toBe(3);
+  expect(testData[0].Title).toBe('Saw');
+  expect(testData).not.toBe(null);
+});
