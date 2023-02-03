@@ -18,6 +18,8 @@ test('should generate error message', async () => {
     await movieservice.getData('error');
   } catch (error: any) {
     expect(error.length).toBe(0);
+    expect(testData.length).toBe(0);
+    expect(testData[0].Title).not.toBe('Saw');
   }
 });
 
